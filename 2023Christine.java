@@ -2,31 +2,26 @@ import java.util.*;
 import java.io.*;
 
 public class App {
-    public static void main(String[] args) throws Exception {
-        Scanner f = new Scanner(new File("christine.dat"));
-        int y = f.nextInt();
-        for(int i = 0; i < 5; i ++){
-            int x = y;
-            y = f.nextInt();
+  public static void main(String[] args) throws Exception {
+    Scanner f = new Scanner(new File("christine.dat"));
+    int ahead = f.nextInt();
+    int behind;
+    for(int n = 0; n < 5; n++){
+      behind = ahead;
+      ahead = f.nextInt();
 
-
-            if(y > x){
-                while(x <= y){
-                    System.out.print(x + " ");
-                    x++;
-                }
-            }
-            else if(y < x){
-                while(x >= y){
-                    System.out.print(x + " ");
-                    x--;
-                }
-            }
-            else{
-                System.out.print(x);
-            }
-
-            System.out.println();
+      if(behind < ahead){
+        for(int i = behind; i <= ahead; i++){
+          System.out.print(i + " ");
+        } 
+      }
+      else if(behind > ahead){
+        for(int i = behind; i >= ahead; i--){
+          System.out.print(i+ " ");
         }
+      }
+      else {System.out.print(behind);}
+      System.out.println();
     }
+  }
 }
