@@ -1,3 +1,43 @@
+//class-less implementation
+import java.util.*;
+import java.io.*;
+
+public class App {
+    public static void main(String[] args) throws Exception {
+        Scanner f = new Scanner(new File("liza.dat"));
+        int n = f.nextInt();
+        f.nextLine();
+
+        while (n-- > 0) {
+            System.out.println(f.nextLine());
+            int studentCount = f.nextInt(); f.nextLine();
+            double sum = 0;
+            String[][] students = new String[studentCount][3];
+
+            for (int i = 0; i < studentCount; i++) {
+                students[i] = f.nextLine().split(",");
+                sum += Double.parseDouble((students[i][2]));
+            }
+
+            Arrays.sort(students, Comparator
+            .comparingInt((String[] student) -> Integer.parseInt(student[2])).reversed()
+            .thenComparing((String[] student) -> student[0])
+            .thenComparing((String[] student) -> student[1])
+            );
+
+            for(int i = 0; i < 3; i++){
+                System.out.println(students[i][1] + " " + students[i][0] + ": " + students[i][2]);
+            }
+            System.out.printf("Mean: %.2f\n", sum/studentCount);
+            double median = (studentCount%2==0) 
+            ? (Double.parseDouble(students[studentCount/2 - 1][2]) + Double.parseDouble(students[studentCount/2][2]))/2.0 
+            : Double.parseDouble(students[studentCount/2][2]);
+            System.out.printf("Median: %.1f\n", median);
+            System.out.println();
+        }
+    }
+}
+//class implementation
 import java.util.*;
 import java.io.*;
 
