@@ -1,3 +1,27 @@
+//better way
+import java.util.*;
+import java.io.*;
+
+public class App {
+    public static void main(String[] args) throws Exception {
+        Scanner f = new Scanner(new File("krishna.dat"));
+        int n = f.nextInt();
+        f.nextLine();
+
+        while(n-- > 0){
+            int lower = f.nextInt();
+            int upper = f.nextInt();
+            int sum = 0;
+
+            for(int i = lower; i <= upper; i++){
+                sum += (i*(i+1))/2;
+            }
+            System.out.println(sum);
+        }
+    }
+}
+
+//recursion
 import java.util.*;
 import java.io.*;
 
