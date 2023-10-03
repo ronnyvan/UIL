@@ -77,9 +77,7 @@ public class App {
 }
 
 class Info {
-    String name;
-    String firstName;
-    String lastName;
+    String name, firstName, lastName;
     int grade;
 
     public Info(String[] s) {
